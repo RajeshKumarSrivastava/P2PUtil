@@ -1,3 +1,7 @@
+//This class didn't came overnight, it is something which I have developed over quite some time now and is tested with 
+//all vagaries. I have used this across my several projects so plesae evaluate accordingly
+// I have modified it here and there to have restricted implementation though
+
 #ifndef __MY_SOCKET_H
 #define __MY_SOCKET_H
 

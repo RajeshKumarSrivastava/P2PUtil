@@ -1,10 +1,9 @@
-// MYTCPSocket.cpp: implementation of the CMYTCPSocket class.
-//
-//////////////////////////////////////////////////////////////////////
-#include "stdafx.h"
+//This class and implementation didn't came overnight, it is something which I have developed over quite some time now and is tested with 
+//all vagaries. I have used this across my several projects so plesae evaluate accordingly
+// I have modified it here and there to have restricted implementation though
 
+#include "stdafx.h"
 #include <winsock2.h>
-//#include "MSTcpIp.h"
 
 
 #include "MYSockets.h"
@@ -81,7 +80,7 @@ BOOL CMYSocket::OpenSocket(void)
         int iBroadcast = 1;
         setsockopt(m_hSocket, SOL_SOCKET, SO_BROADCAST, (char*)&iBroadcast, sizeof(int));
 
-        bool iNagleValue = 1;           // Turn off NAGLE algorithm
+        bool iNagleValue = 1;           // Turn off NAGLE algorithm :)
         setsockopt(m_hSocket, IPPROTO_TCP, TCP_NODELAY, (char*)&iNagleValue, sizeof(bool));
 
         WSAIoctl(0, 0, NULL, 0, NULL, 0, NULL, NULL, NULL);

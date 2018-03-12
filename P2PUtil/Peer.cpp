@@ -20,6 +20,8 @@ CPeer* CPeer::FactoryPeer()
 	}
 }
 
+//Peer will connect to a remote nearby Peer and will send an initial command which will the request
+// Request to shate a file that may be present at the immediate Peer.
 bool CPeer::RequestFile(std::string filename)
 {
 
