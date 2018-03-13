@@ -36,6 +36,9 @@
     <ClInclude Include="..\..\..\..\..\..\..\Ddrive\study\Projects\Cpp\SimPumps_US_EMV\CSocketManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PeerMsgHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -54,6 +57,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Peer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PeerMsgHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

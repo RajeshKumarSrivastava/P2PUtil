@@ -21,6 +21,15 @@ int main()
 	if (bool bClientStarted = Peer->StartTheClient())
 	{
 		//Log that the thread has started
+		bool breturn = Peer->SendRequestFile("ABC.txt"); // Just to Demo both server and client works asysnchronously
+		if (breturn)
+		{
+			//file requested
+		}
+		else
+		{
+			//May be request again
+		}
 	}
 	else
 	{

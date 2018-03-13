@@ -5,8 +5,9 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "stdafx.h"
 #include <queue>
+//#include "StdAfx.h"
+#include <mutex>
 
 using std::queue;
 
@@ -24,10 +25,8 @@ class CMsgQueue : private queue<BYTE*>
     unsigned int Count();
 
   private:
-    void Lock()    { m_csQueue.Lock(); }
-    void Unlock()  { m_csQueue.Unlock(); }
 
-    CCriticalSection m_csQueue;
+    std::mutex m_mutexQueue;
     HANDLE m_hMsgEvent;
 };
 

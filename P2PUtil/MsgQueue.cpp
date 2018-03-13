@@ -1,8 +1,11 @@
 #include "StdAfx.h"
 #include "MsgQueue.h"
 
+
+using CLock = std::lock_guard<std::mutex>;
+
 CMsgQueue::CMsgQueue()
-:m_csQueue()
+:m_mutexQueue()
 {
     m_hMsgEvent = CreateEvent(NULL,  TRUE, FALSE, NULL);
 }
@@ -20,7 +23,7 @@ HANDLE CMsgQueue::GetMsgEvent()
 
 void CMsgQueue::AddMsgToQueue(BYTE* pbtBytes)
 {
-    CLock oQueueLocker(&m_csQueue);
+    CLock oQueueLocker(m_mutexQueue);
 
     push(pbtBytes);
     SetEvent(m_hMsgEvent);
@@ -29,7 +32,7 @@ void CMsgQueue::AddMsgToQueue(BYTE* pbtBytes)
 BYTE* CMsgQueue::GetMessage()
 {
     BYTE* pbtBytes = NULL;
-    CLock oQueueLocker(&m_csQueue);
+	CLock oQueueLocker(m_mutexQueue);
  
     if (size())
     {
@@ -46,7 +49,7 @@ BYTE* CMsgQueue::GetMessage()
 
 void CMsgQueue::Clear()
 {
-    CLock oQueueLocker(&m_csQueue);
+    CLock oQueueLocker(m_mutexQueue);
     
     while (!empty())
     {
@@ -60,7 +63,7 @@ void CMsgQueue::Clear()
 
 unsigned int CMsgQueue::Count()
 {
-    CLock oQueueLocker(&m_csQueue);
+    CLock oQueueLocker(m_mutexQueue);
     int iSize = static_cast<unsigned int>(size());
     return iSize;
 }
